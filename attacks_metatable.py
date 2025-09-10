@@ -6,7 +6,7 @@ from sklearn.metrics import balanced_accuracy_score
 
 diag_final = pd.DataFrame()
 
-directory = "/home/lukasz/QED/attacks/results/"
+directory = "results"
 list_of_files = os.listdir(directory)
 
 for input_file in tqdm(list_of_files, desc="Dataset"):
@@ -37,4 +37,4 @@ for input_file in tqdm(list_of_files, desc="Dataset"):
 
         diag_final = pd.concat([diag_final, df_diag])
 
-diag_final.to_csv("/home/lukasz/QED/attacks/attacks_diagnoses.csv", index=False)
+diag_final.to_csv("results/attacks_diagnoses.csv", index=False)

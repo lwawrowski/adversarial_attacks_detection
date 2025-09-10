@@ -149,9 +149,8 @@ def conduct_permute_attack(model, X_test, Y_test, X_train, test_nrows, features)
     bacc_dict = {'bacc_test': balanced_accuracy_score(test_df['target'], test_df['prediction'])}
     pd.DataFrame(bacc_dict, index=[0]).to_csv(os.path.join(path_bacc, "bacc_" + selected_model + "_" + selected_attack + "_" + dataset_name + ".csv"), index=False)
 
-directory = "/home/lukasz/QED/phd_piotrb/data/"
+directory = "data"
 list_of_files = os.listdir(directory)
-list_of_files = ["nomao.csv"]
 
 for input_file in list_of_files:
 
@@ -159,7 +158,7 @@ for input_file in list_of_files:
     filename = input_file.split("/")[-1]
     dataset_name = filename.split(".")[0]
 
-    output_path = "/home/lukasz/QED/phd_piotrb/results/"
+    output_path = "results"
     path_attacks = os.path.join(output_path, dataset_name, "attacks")
     path_bacc = os.path.join(output_path, dataset_name, "bacc")
     os.makedirs(path_attacks, exist_ok=True)
@@ -167,8 +166,8 @@ for input_file in list_of_files:
 
     df = pd.read_csv(os.path.join(directory, input_file))
 
-    models = ["lin"]  # ["svm", "lin", "xgb"]
-    attacks = ["per"]  # ["per", "zoo", "hsj", "lpf"]
+    models = ["svm", "lin", "xgb"]
+    attacks = ["per", "zoo", "hsj", "lpf"]
 
     X_train, X_test, Y_train, Y_test, Y_train_one, Y_test_one, X_columns = prepare_data(df)
 
